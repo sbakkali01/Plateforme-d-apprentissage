@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plateforme d'apprentissage</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="bg-primary text-white text-center py-3">
+    <div id="user-auth" class="position-absolute" style="top: 20px; right: 20px;">
+        <button class="btn btn-success m-2"><a href="/login" style="color: inherit;">Connexion</a></button>
+        <button class="btn btn-success m-2"><a href="/register" style="color: inherit;">Inscription</a></button>
+    </div>
+    <h1>Plateforme d'apprentissage</h1>
+    <nav>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/home">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/cours">Cours</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/exercices">Exercices</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/about">À propos</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+{% block content %}
+{% endblock %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
+</body>
+</html>

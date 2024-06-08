@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block content %}
+<section id="cours">
+            <h2 class="mt-4">Ajouter un cours</h2>
+            <form id="course-upload-form">
+                <div class="form-group">
+                    <input type="file" id="course-file" class="form-control-file" required>
+                </div>
+                <div class="form-group">
+                    <label for="course-name"></label><input type="text" id="course-name" class="form-control" placeholder="Nom du cours" required>
+                </div>
+                <div class="form-group">
+                    <label for="course-description"></label><textarea id="course-description" class="form-control" placeholder="Description du cours" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="course-level"></label><input type="text" id="course-level" class="form-control" placeholder="Niveau du cours" required>
+                </div>
+                <button type="button" class="btn btn-success" onclick="uploadCourse()">Uploader le cours</button>
+                <div id="course-upload-message" class="mt-2"></div>
+            </form>
+<h2>Cours disponibles</h2>
+            <button class="btn btn-primary mb-3" onclick="getAllCours()">Afficher tous les cours</button>
+            <div class="input-group mb-3">
+                <label for="search-cours"></label><input type="text" id="search-cours" class="form-control" placeholder="Rechercher un cours par nom">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" onclick="searchCours()">Rechercher</button>
+                </div>
+            </div>
+            <div id="cours-results" class="list-group"></div>
+        </section>
+{% endblock %}

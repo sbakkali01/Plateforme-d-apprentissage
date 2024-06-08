@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block content %}
+<section id="exercices">
+            <h2 class="mt-4">Ajouter un exercice</h2>
+            <form id="exercise-upload-form">
+                <div class="form-group">
+                    <input type="file" id="exercise-file" class="form-control-file" required>
+                </div>
+                <div class="form-group">
+                    <label for="exercise-name"></label><input type="text" id="exercise-name" class="form-control" placeholder="Nom de l'exercice" required>
+                </div>
+                <div class="form-group">
+                    <label for="exercise-description"></label><textarea id="exercise-description" class="form-control" placeholder="Description de l'exercice" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exercise-level"></label><input type="text" id="exercise-level" class="form-control" placeholder="Niveau de l'exercice" required>
+                </div>
+                <button type="button" class="btn btn-success" onclick="uploadExercise()">Uploader l'exercice</button>
+                <div id="exercise-upload-message" class="mt-2"></div>
+            </form>
+<h2>Exercices et pratiques</h2>
+            <button class="btn btn-primary mb-3" onclick="getAllExercices()">Afficher tous les exercices</button>
+            <div class="input-group mb-3">
+                <label for="search-exercices"></label><input type="text" id="search-exercices" class="form-control" placeholder="Rechercher un exercice par nom">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" onclick="searchExercices()">Rechercher</button>
+                </div>
+            </div>
+            <div id="exercices-results" class="list-group"></div>
+        </section>
+{% endblock %}
