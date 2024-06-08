@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 
 import server
-# test
+# testt
 cours_bp = Blueprint("cours", __name__, template_folder="templates")
 
 
