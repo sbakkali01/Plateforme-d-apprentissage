@@ -20,7 +20,6 @@ app.config['UPLOAD_FOLDER'] = 'cours'
 app.config['SECRET_KEY'] = 'cle_secrete'
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['TEMPLATES_AUTO_RELOAD'] = True
-
 # Ensure the upload folder exists
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
