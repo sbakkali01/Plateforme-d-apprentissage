@@ -2,12 +2,11 @@ admin,password,admin,Informatique
 professeur,password,professeur,Mathématiques
 eleve,password,eleve,Data Science
 
-Misc : mettre ce doc en md ,
+Misc : mettre ce doc en md , extension pour twig
 
 login_exp :
 
 -IMPORTANT :
-    - Gérer les doublons de comptes : empecher de register avec un mail existant
     - Faire des sessions/ cookies
     - Implementation de l'email de confirmation
     - il faut rajouter le js qui indique les mdp matchs , l'email bien formaté, les mdps assez longs/ charactères.

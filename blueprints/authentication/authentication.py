@@ -26,7 +26,8 @@ class User(UserMixin):
     @staticmethod
     def create(email: str, password: str):
         try:
-            server.run_query(f"insert into users (email,password) values ('{email}','{password}')")
+            hashed_password = generate_password_hash(password).decode().replace("$2b$12$","")
+            server.run_query(f"insert into users (email,password) values ('{email}','{hashed_password}')")
             return True
         except sqlite3.IntegrityError as e:
             if 'UNIQUE constraint failed' in str(e):
@@ -62,15 +63,14 @@ def login_page():
     form = LoginForm()
     return render_template("login.html", form=form)
 
-
 @authentication_bp.route("/register", methods=["GET", "POST"])
 def register_page():
     form = RegisterForm()
     if form.validate_on_submit():
         success = User.create(email=form.email.data, password=form.password.data)
         if success:
-            flash('Registration successful! Please login.', 'success')
-            return redirect(url_for('login_page'))
+            flash('Registration successful! Please login.', 'error')
+            return redirect(url_for('authentication.login_page'))
         else:
             flash('Email already in use. Please use a different email.', 'danger')
     return render_template("register.html", form=form)

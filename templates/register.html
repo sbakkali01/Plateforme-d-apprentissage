@@ -1,37 +1,42 @@
 {% extends "index.html" %}
 
 {% block content %}
-<form method="POST">
-    {{ form.hidden_tag() }}
-  <div class="form-group">
-    <label for="exampleInputEmail1">Adresse mail</label>
-      {{ form.email }}
-      {% if form.email.errors %}
-      <div class="alert alert-danger">
-        {% for error in form.email.errors %}
-          <p>{{ error }}</p>
-        {% endfor %}
-      </div>
-    {% endif %}
-    <small id="emailHelp" class="form-text text-muted">Votre Email ne sera jamais utilisé à des fins
-        commerciales </small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Mot de passe </label>
-      {{ form.password }}
-  </div>
-    .<div class="form-group">
-    <label for="exampleInputPassword1">Répetez le mot de passe</label>
-    {{ form.password2 }}
-    <div class="alert alert-danger">
-        {% for error in form.password2.errors %}
-          <p>{{ error }}</p>
-        {% endfor %}
-      </div>
-  </div>
-  <div class="form-group form-check">
-      <a href="/login">Vous avez deja un compte ? Connectez vous ! </a>
-  </div>
-{{ form.submit }}
-</form>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <label for="exampleInputEmail1">Adresse mail</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+            {% endif %}
+            <small id="emailHelp" class="form-text text-muted">Votre Email ne sera jamais utilisé à des fins
+                commerciales </small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Mot de passe </label>
+            {{ form.password }}
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Répetez le mot de passe</label>
+            {{ form.password2 }}
+
+                {% for error in form.password2.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+        </div>
+        <div class="form-group form-check">
+            <a href="/login">Vous avez deja un compte ? Connectez vous ! </a>
+        </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for msg in messages %}
+                    <p>{{ msg }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {{ form.submit }}
+    </form>
 {% endblock %}
