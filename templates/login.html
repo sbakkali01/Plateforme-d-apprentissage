@@ -2,7 +2,7 @@
 
 {% block content %}
     <form method="POST">
-     {{ form.hidden_tag() }}
+        {{ form.hidden_tag() }}
         <div class="form-group">
             <label for="exampleInputEmail1">Adresse mail</label>
             {{ form.email(class="form-control") }}
@@ -17,5 +17,8 @@
         <div class="form-group form-check">
             <a href="/register">Pas de compte ? Créez en un ! </a>
         </div>
-           {{ form.submit }}
+        <label >Remember Me</label>
+        {{ form.remember_me }}
+        <br>
+        {{ form.submit }}
 {% endblock %}

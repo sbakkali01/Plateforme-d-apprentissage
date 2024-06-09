@@ -4,7 +4,7 @@ from flask import Blueprint, render_template, redirect, url_for,session,flash
 from flask_bcrypt import generate_password_hash
 from flask_login import UserMixin
 from flask_wtf import FlaskForm
-from wtforms.fields.simple import StringField, PasswordField, SubmitField
+from wtforms.fields.simple import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import InputRequired, Length, EqualTo
 
 import server
@@ -51,6 +51,7 @@ class LoginForm(FlaskForm):
         InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "E-mail"})
     password = PasswordField(validators=[
         InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Mot de passe"})
+    remember_me=BooleanField("Remember Me")
     submit = SubmitField('Login')
 
 
@@ -71,6 +72,8 @@ def login_page():
     if form.validate_on_submit():
         found=User.search_user(email=form.email.data,password=form.password.data)
         if found:
+            if form.remember_me.data:
+                session.permanent = True
             session["user"]={"user_email":form.email.data}
             return redirect(url_for("home_page"))
     return render_template("login.html", form=form)

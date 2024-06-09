@@ -11,11 +11,10 @@ from blueprints.authentication.authentication import authentication_bp
 from blueprints.cours.cours import cours_bp
 from blueprints.exercices.exercices import exercices_bp
 from flask_session import Session
-
 app = Flask(__name__)
 app.register_blueprint(cours_bp)
 app.secret_key="hello"
-# app.permanent_session_lifetime=timedelta(seconds=30)
+app.permanent_session_lifetime=timedelta(seconds=20)
 app.register_blueprint(exercices_bp)
 app.register_blueprint(authentication_bp)
 app.config['UPLOAD_FOLDER'] = 'cours'

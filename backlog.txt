@@ -4,10 +4,11 @@ eleve,password,eleve,Data Science
 
 Misc : mettre ce doc en md , extension pour twig
 
-login_exp :
+login_exp : refaire le design
 
 -IMPORTANT :
-    - Faire des sessions/ cookies
+    - Faire session idle , cas ou on revient sur la page login alors qu'on l'est deja, cas navigateur fermé
+    - en quoi utiliser les cookies utiles
     - Implementation de l'email de confirmation
     - il faut rajouter le js qui indique les mdp matchs , l'email bien formaté, les mdps assez longs/ charactères.
     -flash messages login logout register
